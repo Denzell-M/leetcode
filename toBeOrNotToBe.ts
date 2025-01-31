@@ -33,8 +33,24 @@ type ToBeOrNotToBe = {
 };
 
 function expect(val: any): ToBeOrNotToBe {
-    
-};
+    return {
+        toBe: (received: any) => {
+            if (val === received) {
+                return true;
+            } else {
+                throw new Error("Not Equal");
+            }
+        },
+        notToBe: (received: any) => {
+            if (val === received) {
+                throw new Error("Equal");
+            } else {
+                return true;
+            }
+        }
+    };
+}
+
 
 /**
  * expect(5).toBe(5); // true
