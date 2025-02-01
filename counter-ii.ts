@@ -47,7 +47,7 @@ type Counter = {
     reset: () => number,
 }
 
-function createCounter(init: number): Counter {
+function createCounterII(init: number): Counter {
     let current = init;
     return {
         increment: () => {
