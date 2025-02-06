@@ -33,9 +33,9 @@ Constraints:
 
 */
 
-type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue };
+type JSON2703Value = null | boolean | number | string | JSON2703Value[] | { [key: string]: JSON2703Value };
 
-function argumentsLength(...args: JSONValue[]): number {
+function argumentsLength(...args: JSON2703Value[]): number {
     return args.length;
 };
 
