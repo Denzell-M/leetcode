@@ -14,8 +14,6 @@ You can assume there are 3 possible input functions: sum, fib, and factorial.
     fib accepts a single integer n and returns 1 if n <= 1 or fib(n - 1) + fib(n - 2) otherwise.
     factorial accepts a single integer n and returns 1 if n <= 1 or factorial(n - 1) * n otherwise.
 
- 
-
 Example 1:
 
 Input:
@@ -72,13 +70,20 @@ Constraints:
     fnName is one of "sum", "factorial" and "fib"
 */
 
-type Fn = (...params: number[]) => number
+type Fn = (...params: number[]) => number;
 
 function memoize(fn: Fn): Fn {
-    
-    return function(...args) {
-        
+  const cache: { [key: string]: number } = {};
+
+  return function (...args: number[]): number {
+    const key = args.join(',');
+    if (cache[key] !== undefined) {
+      return cache[key];
     }
+    const result = fn(...args);
+    cache[key] = result;
+    return result;
+  }
 }
 
 
